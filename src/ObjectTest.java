@@ -13,6 +13,5 @@ public class ObjectTest {
         System.out.println(random);
         boolean aNull = Objects.isNull(stu);
         System.out.println(aNull);
-
     }
 }
