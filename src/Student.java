@@ -2,12 +2,12 @@ import java.util.Objects;
 
 public class Student {
     private String name;
-    private String age;
+    private int age;
 
     public Student() {
     }
 
-    public Student(String name, String age) {
+    public Student(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -20,12 +20,16 @@ public class Student {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setAge(int age) {
+        if (age >= 18 && age <= 25){
+            this.age = age;
+        }else {
+            throw new AgeOutOfBoundException("年龄超出范围");
+        }
     }
 
     @Override
@@ -45,12 +49,5 @@ public class Student {
 
         if (!Objects.equals(name, student.name)) return false;
         return Objects.equals(age, student.age);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (age != null ? age.hashCode() : 0);
-        return result;
     }
 }
